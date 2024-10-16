@@ -14,12 +14,10 @@ const itemsSchema  =  new Schema({
         type:String,
         required:[true,"description is required."]
     },
-    images:[{
-        url:{
-            type:String,
-      
-        }
-    }]
+    image:{
+        type:String,
+        required:[true,"image is required."]
+    }
 },{timestamps:true})
 
 const Item  =  model("Item",itemsSchema)

@@ -6,6 +6,24 @@ const insertItemIntoDb  =  async(data)=>{
 }
 
 
+const getAllItems  = async(query)=>{
+    const result =  await Item.find(query)
+return result
+}
+
+
+const getSingleItems  =  async(id)=>{
+    const result  =  await Item.findById(id)
+    return result
+}
+
+
+const updateItem  = async(id,itemData)=>{
+    const result  =  await Item.findByIdAndUpdate(id,itemData,{new:true})
+    return result
+}
+
+
 
 //  get single
 // get all
@@ -16,7 +34,10 @@ const insertItemIntoDb  =  async(data)=>{
 
 
  const itemServices  ={
-    insertItemIntoDb
+    insertItemIntoDb,
+    getAllItems,
+    getSingleItems,
+    updateItem
 }
 
 export default itemServices

@@ -1,6 +1,7 @@
 import User from "./user.model.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken"
+import Apperror from "../../error/AppError.js"
 const insertUserIntoDB  = async(data)=>{
  const hasedData  = {...data}
 const hasedPassword  = await bcrypt.hash(hasedData.password,12)
@@ -13,7 +14,7 @@ const loginUser  = async(data)=>{
     // 
     const isUserExist  =  await User.findOne({email:data?.email})
  if(!isUserExist){
- throw new Error("user not exist.")
+ throw new Apperror(400,"user not exist.")
  }
 
  const isPasswordMatched  = await bcrypt.compare(data?.password,isUserExist?.password)
