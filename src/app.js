@@ -1,6 +1,7 @@
 import express from "express"
 import userRoutes from "./app/module/user/user.route.js"
 import itemRoutes from "./app/module/items/items.route.js"
+import restaurantRoutes from "./app/module/restaurant/restaurant.route.js"
 
  const app  =  express()
  app.use(express.json())
@@ -17,6 +18,7 @@ const errorHandler  =  (err,req,res,next)=>{
 app.use(errorHandler)
 app.use("/api",userRoutes)
 app.use("/api",itemRoutes)
+app.use("/api",restaurantRoutes)
 app.get('/', (req, res) => {
     res.send('server is running....')
   })
